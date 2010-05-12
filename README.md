@@ -22,6 +22,10 @@ Crank up the server with
     
 or run under [Passenger](http://modrails.com) with something like `yoursite.local`
 
+## Import your own Tumblr content
+
+    padrino rake import
+
 Once you're ready to deploy, copy your assets to your asset host and  paste the contents of theme.html into Tumblr.
 
 
