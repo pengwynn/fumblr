@@ -11,8 +11,8 @@ gem 'compass', '0.10.0'
 gem 'nokogiri'
 
 # Test requirements
-gem 'shoulda', :group => "test"
+gem 'shoulda', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino
-gem 'padrino', "0.9.10"
+gem 'padrino', '0.9.10'
