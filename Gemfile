@@ -6,8 +6,8 @@ gem 'rack-flash'
 gem 'thin' # or mongrel
 
 # Component requirements
-gem 'haml', '3.0.2'
-gem 'compass', '0.10.0'
+gem 'sass', '~> 3.1.1'
+gem 'compass', '~> 0.11.1'
 gem 'nokogiri'
 
 # Test requirements
