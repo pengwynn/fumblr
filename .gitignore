@@ -9,3 +9,4 @@ vendor/gems/*
 config/fumblr.yml
 data/*
 !data/demo.yml
+themes/wynn
