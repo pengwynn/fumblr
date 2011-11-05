@@ -1,0 +1,4 @@
+data_path: data
+tumblr_username: pengwynn
+themes_path: 'themes'
+theme: "redux"

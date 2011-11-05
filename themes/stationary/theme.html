@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	{block:IndexPage}
+	<title>{Title}</title>
+	<meta name="description" content="{MetaDescription}">
+	{/block:IndexPage}
+	{block:PostSummary}<title>{PostSummary}</title>{/block:PostSummary}
+	<meta name="viewport" content="width=848">
+	<meta name="if:Elsewhere" content="0">
+	<meta name="text:Elsewhere 1 Name" content="">
+	<meta name="text:Elsewhere 1 URL" content="">
+	<meta name="text:Elsewhere 2 Name" content="">
+	<meta name="text:Elsewhere 2 URL" content="">
+	<meta name="text:Elsewhere 3 Name" content="">
+	<meta name="text:Elsewhere 3 URL" content="">
+	<meta name="text:Tagline" content="Your awesome tagline">
+	<meta name="text:Disqus Shortname" content="">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" href="{RSS}" type="application/rss+xml">
+	<link rel="stylesheet" href="http://static.tumblr.com/j8lh0bq/A1Ukkwf8p/reset.css" type="text/css">
+	<link rel="stylesheet" href="http://static.tumblr.com/j8lh0bq/Nunksbfhp/oldie.css" type="text/css">
+	<style type="text/css" media="screen">
+		#disqus_thread {
+		    margin: 0 0 30px 0 !important;
+		}
+		{CustomCSS}
+	</style>
+</head>
+<body>
+<div id="main">
+
+<div id="inner">
+
+<div id="header">	
+	<h1><a href="/">{Title}</a></h1>
+	{block:IfTagline}<div class="tagline">{text:Tagline}</div>{/block:IfTagline}
+</div>
+
+<div id="sidebar">
+	<div id="inner-sidebar">
+		<div id="authorbox">
+		<h3>About the author</h3>
+			<img src="{PortraitURL-48}" class="profilepic" alt="{Title}">
+			{Description}
+			<div class="clear"></div>
+			{block:HasPages}
+				{block:Pages}<h3><a href="{URL}">{Label}</a></h3>{/block:Pages}
+			{/block:HasPages}
+		</div>
+		{block:IfElsewhere}
+		<div class="more">
+    		<h3>Elsewhere</h3>
+			<p>
+				{block:IfElsewhere1Name}<a href="{text:Elsewhere 1 URL}">{text:Elsewhere 1 Name}</a> {/block:IfElsewhere1Name}
+				{block:IfElsewhere2Name}<a href="{text:Elsewhere 2 URL}">{text:Elsewhere 2 Name}</a> {/block:IfElsewhere2Name}
+				{block:IfElsewhere3Name}<a href="{text:Elsewhere 3 URL}">{text:Elsewhere 3 Name}</a> {/block:IfElsewhere3Name}
+			</p>
+			<div class="clear"></div>
+		</div>
+		{/block:IfElsewhere}
+	</div>
+</div>
+
+<div id="entries">
+
+{block:SearchPage}
+<div id="fake-post" class="entry">
+	<div class="content">{block:NoSearchResults}Terribly sorry, a total of {/block:NoSearchResults}<strong>{SearchResultCount}</strong> result(s) for <strong>{SearchQuery}</strong></div>
+</div>
+{/block:SearchPage}
+
+{block:TagPage}
+<div id="fake-post" class="entry">
+	<div class="content">Posts tagged <strong>{Tag}</strong></div>
+</div>
+{/block:TagPage}
+
+{block:Posts}
+
+{block:Text}
+<div id="post-{PostID}" class="entry text">
+	{block:Title}<h2><a href="{Permalink}" rel="permalink">{Title}</a></h2>{/block:Title}
+	<div class="content">{Body}</div>
+	<div class="meta">{block:Date}{DayOfWeek}, {Month} {DayOfMonth}, {Year}{/block:Date}{block:NoteCount} &mdash; <a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}{block:Date}{block:IfDisqusShortname}&nbsp;&nbsp;&nbsp;(<a href="{Permalink}#disqus_thread"></a>){/block:IfDisqusShortname}{/block:Date}{block:More}&nbsp;&nbsp;&nbsp;<a href="{Permalink}">Read more &hellip;</a>{/block:More}</div>
+</div>
+{/block:Text}
+
+{block:Photo}
+<div id="post-{PostID}" class="entry media">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<div class="container">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}</div>
+	{block:Caption}<div class="content">{Caption}</div>{/block:Caption}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Photo}
+
+{block:Photoset}
+<div id="post-{PostID}" class="entry media">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<div class="container">{Photoset-500}</div>
+	{block:Caption}<div class="content">{Caption}</div>{/block:Caption}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Photoset}
+
+{block:Quote}
+<div id="post-{PostID}" class="entry quote">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<h2>{Quote}</h2>
+	{block:Source}<div class="content">{Source}</div>{/block:Source}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Quote}
+
+{block:Link}
+<div id="post-{PostID}" class="entry link">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<h2><a href="{URL}" {Target}>{Name}</a></h2>
+	{block:Description}<div class="content">{Description}</div>{/block:Description}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Link}
+
+{block:Chat}
+<div id="post-{PostID}" class="entry chat">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	{block:Title}<h2>{Title}</h2>{/block:Title}
+	<div class="content">
+		<ul>
+			{block:Lines}<li class="{Alt}">{block:Label}<span class="label">{Label}</span> {/block:Label}{Line}</li>{/block:Lines}
+		</ul>
+	</div>
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Chat}
+
+{block:Audio}
+<div id="post-{PostID}" class="entry audio">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<div class="container">{AudioPlayerWhite}</div>
+	{block:Caption}<div class="content">{Caption}</div>{/block:Caption}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Audio}
+
+{block:Video}
+<div id="post-{PostID}" class="entry media">
+	<div class="minimeta"><a href="{Permalink}" rel="permalink"><img src="http://static.tumblr.com/j8lh0bq/I27krymjj/pointer.png" alt=""></a></div>
+	<div class="container">{Video-500}</div>
+	{block:Caption}<div class="content">{Caption}</div>{/block:Caption}
+	{block:Date}{block:IfDisqusShortname}<div class="meta">(<a href="{Permalink}#disqus_thread"></a>)</div>{/block:IfDisqusShortname}{/block:Date}
+</div>
+{/block:Video}
+
+{/block:Posts}
+
+{block:Permalink}
+{block:IfDisqusShortname}
+<div id="disqus_thread"></div>
+<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+<noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+{/block:IfDisqusShortname}
+{/block:Permalink}
+
+{block:PostNotes}
+<div id="notes">
+	{PostNotes}
+</div>
+{/block:PostNotes}
+
+{block:Pagination}
+	<div class="page-navigation">
+		{block:PreviousPage}<div class="left"><a href="{PreviousPage}">&larr; Previous page</a></div>{/block:PreviousPage}
+		{block:NextPage}<div class="right"><a href="{NextPage}">Next page &rarr;</a></div>{/block:NextPage}
+		<div class="clear"></div>
+	</div>
+{/block:Pagination}
+{block:PermalinkPagination}
+	<div class="page-navigation">
+		{block:PreviousPost}<div class="left"><a href="{PreviousPost}">&larr; Previous post</a></div>{/block:PreviousPost}
+		{block:NextPost}<div class="right"><a href="{NextPost}">Next post &rarr;</a></div>{/block:NextPost}
+		<div class="clear"></div>
+	</div>
+{/block:PermalinkPagination}
+
+</div>
+
+<div class="clear"></div>
+</div>
+
+<div id="footer">
+	<form class="search-footer" action="/search" method="get">
+	    <input class="search-query" type="text" name="q" value="{SearchQuery}"><input class="button" type="submit" value="Search">
+	</form>
+	<div class="actual-footer">
+		<p><a href="{RSS}">RSS</a>, <a href="/archive">Archive</a>. We love <a href="http://www.tumblr.com/">Tumblr</a>. Theme (<a href="http://www.tumblr.com/theme/3292">Stationery</a>) by <a href="http://thijsjacobs.com/">Thijs</a></p>
+	</div>
+	<div class="clear"></div>
+</div>
+
+</div>
+
+{block:IfDisqusShortname}
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+    }
+    }
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+{/block:IfDisqusShortname}
+</body>
+</html>

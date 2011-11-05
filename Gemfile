@@ -12,6 +12,7 @@ gem 'nokogiri'
 gem 'Thimblr', :require => false
 
 group :development do
+  gem 'shotgun'
   gem 'rb-fsevent'
   gem 'growl_notify'
   gem 'guard'
@@ -26,4 +27,5 @@ group :test do
 end
 
 
-gem 'sinatra', '~> 1.0.0'
+gem 'sinatra', '~> 1.3.0'
+gem 'sinatra-contrib'

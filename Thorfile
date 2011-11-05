@@ -9,4 +9,9 @@ class Fumblr < Thor
       f.puts data
     end
   end
+
+  desc "server <username> <theme>", "Start Fumblr server"
+  def server(username='demo', theme='101')
+    %x[shotgun]
+  end
 end
