@@ -9,10 +9,21 @@ gem 'thin' # or mongrel
 gem 'sass', '~> 3.1.1'
 gem 'compass', '~> 0.11.1'
 gem 'nokogiri'
+gem 'Thimblr', :require => false
 
-# Test requirements
-gem 'shoulda', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+group :development do
+  gem 'rb-fsevent'
+  gem 'growl_notify'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'thor'
+end
 
-# Padrino
-gem 'padrino', '0.9.10'
+group :test do
+  # Test requirements
+  gem 'rspec'
+  gem 'rack-test', :require => 'rack/test', :group => 'test'
+end
+
+
+gem 'sinatra', '~> 1.0.0'
