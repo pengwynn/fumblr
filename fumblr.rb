@@ -12,7 +12,7 @@ theme_config_path = File.join(File.dirname(__FILE__), settings.themes_path, sett
 config_file theme_config_path if File.exists?(theme_config_path)
 
 if settings.theme_asset_host?
-  use Rack::LocalAssets, :asset_host => 'static.thechangelog.com'
+  use Rack::LocalAssets, :asset_host => settings.theme_asset_host
 end
 
 set :public_folder, File.join( File.dirname(__FILE__), settings.themes_path, settings.theme, "public" )

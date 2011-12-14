@@ -2,3 +2,4 @@ data_path: data
 tumblr_username: demo
 themes_path: 'themes'
 theme: "101"
+theme_asset_host: assets.example.com
